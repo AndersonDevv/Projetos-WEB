@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iniciando React</title>
+
+        <!--Carrega o React, React DOM  e o Babel-->
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script> 
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script> 
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+
+            <script type="text/babel">
+
+                /* MODO I
+                
+                function App()
+                    return <div> Meu Primeiro App React</div>
+                
+                */
+
+                 /* MODO II - funciona igual acima*/
+        
+               /* Criando usando classes SEMPRE com primeira letra maiuscula */
+
+               const numAleatorio = Math.random();
+               class Button extends React.Component{
+                   render(){
+                       return <button>Comprar</button>
+                   }
+               }
+               const Button2 = () => {
+                   function handleClick(event){
+                       console.log(event.target.innerText);
+                   }
+
+                   return <button onClick={handleClick}>Comprar</button>
+               }
+                const App = () => <div> Meu Primeiro App React {numAleatorio} <Button/>
+                    <div> Botão =n<Button/></div>
+                    <div> Botao com Mensagem <Button2/></div>
+                    </div>
+                ReactDOM.render(<App/>, document.getElementById("app"))
+            </script> <!--Esse nome é OBRIGATÓRIO, caso contrário não funciona!-->
+        </div>
+
+        <!--
+            ==================== ENTENDENDO A UTILIDADE DO BABEL ====================
+            Ele transforma a função abaixo
+                function App(){
+                    return <div> Meu Primeiro App React</div>
+                }
+            Em um elemento
+            function App{ 
+                return React.createElement('div',{id:'app'}, 'Meu Primeiro  App React'
+            }
+
+            https://babeljs.io/repl teste 
+
+        -->
+
+       <!-- ===============EVENTOS ==================== -->
+        
+
+    </body>
+</html>

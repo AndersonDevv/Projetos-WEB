@@ -1,0 +1,6 @@
+spring.profiles.active=test
+// profile ativo no momento = teste
+
+
+spring.jpa.open-in-view=false
+// JPA não está disponível na camada web

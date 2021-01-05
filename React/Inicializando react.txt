@@ -1,0 +1,25 @@
+https://imasters.com.br/front-end/iniciando-com-react-2-criando-estrutura-do-projeto
+
+Requisitos:
+- ter o Node instalado
+
+1) npm install -g create-react-app
+2) create-react-app my-app
+OBS.: Caso ocorra algum erro do tipo abaixo:
+Cannot be loaded because running scripts is disabled on this system. For    
+more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+
+a solução está em https://stackoverflow.com/questions/4037939/powershell-says-execution-of-scripts-is-disabled-on-this-system
+
+basta fazer:
+a) executar o cmd como ADM 
+b) powershell Set-ExecutionPolicy RemoteSigned 
+
+3) cd my-app
+
+E por fim, iniciaremos o build da aplicação.
+
+4) npm start
+
+https://www.youtube.com/watch?v=7A4UQGrFU9Q
+https://www.youtube.com/watch?v=XQxitgyZ_S4
