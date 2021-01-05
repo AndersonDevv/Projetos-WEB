@@ -1,5 +1,6 @@
 package com.foodDelivery.Dlivery.services;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.foodDelivery.Dlivery.dto.OrderDTO;
 import com.foodDelivery.Dlivery.dto.ProductDTO;
 import com.foodDelivery.Dlivery.entities.Order;
+import com.foodDelivery.Dlivery.entities.OrderStatus;
+import com.foodDelivery.Dlivery.entities.Product;
 import com.foodDelivery.Dlivery.repositories.OrderRepository;
+import com.foodDelivery.Dlivery.repositories.ProductRepository;
 
 @Service  //ou também @Component
 public class OrderService {
@@ -30,6 +34,9 @@ public class OrderService {
 	@Autowired
 	OrderRepository repository;
 	
+	@Autowired
+	private ProductRepository productRepository;
+	
 	@Transactional(readOnly = true)  //essa operação é apenas de leitura. Isso evita um "locking" no banco de dados, colocando essa anotation
 	public List<OrderDTO> findAll(){
 		
@@ -39,5 +46,28 @@ public class OrderService {
 		
 		return list.stream().map(x -> new OrderDTO(x)).collect(Collectors.toList());
 		// agora houve reconversão para lista
+	}
+	
+	
+	
+	/*
+	 * Como pegar um DTO (obj que chega da requisição)
+	 * e salvar no banco? 
+	 * R - Precisa-se instanciar um order a partir de um orderDTO
+	 */
+	@Transactional
+	public OrderDTO insert(OrderDTO dto){
+		Order order = new Order(null, dto.getAddress(), dto.getLatitude(), dto.getLongitude(),
+				Instant.now(), OrderStatus.PENDING);
+		
+		for(ProductDTO p : dto.getProducts()) {
+			Product product = productRepository.getOne(p.getId());  //instancia entidade produto gerenciada pelo JPA
+			// (nao vai no banco d dados) para que, ao salvar o pedido, salve tbm as associações que estão no pedido
+			order.getProducts().add(product);
+		}
+		
+		order = repository.save(order);
+		
+		return new OrderDTO(order); 
 	}
 }
