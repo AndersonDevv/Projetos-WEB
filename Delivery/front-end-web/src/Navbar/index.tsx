@@ -1,12 +1,12 @@
 import './styles.css';
-import  { ReactComponent as Logo} from './logoSVG.svg';
+import  { ReactComponent as Logo} from './Logotipo.svg';
 
 
 function Navbar(){
  return (
     <nav className="main-navbar">
         <Logo className="logo-image"/>
-        <a href="" className="logo-text">DS Delivery</a>
+        <a href="sss" className="logo-text"></a>
     </nav>
  );
 }

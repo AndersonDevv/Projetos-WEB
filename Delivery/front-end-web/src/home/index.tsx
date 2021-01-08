@@ -1,5 +1,5 @@
 import './styles.css';
-import { ReactComponent as MainImage} from './entrega.svg';
+import { ReactComponent as MainImage} from './padrao-entrega-home.svg';
 function Home(){
  return (
     <div className="home-conteiner">
