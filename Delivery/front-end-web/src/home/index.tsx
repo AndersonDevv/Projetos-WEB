@@ -1,8 +1,10 @@
-import './styles.css';
+import './home.css';
 import { ReactComponent as MainImage} from './padrao-entrega-home.svg';
+import Footer from '../footer/footer';
 function Home(){
  return (
-    <div className="home-conteiner">
+   <>
+    <div className="home-container">
         <div className="home-content">
             <div className="home-actions">
                 <h1 className="home-title">
@@ -21,7 +23,8 @@ function Home(){
             </div>
         </div>   
     </div>
-   
+    <Footer />
+   </>
  );
 }
 
