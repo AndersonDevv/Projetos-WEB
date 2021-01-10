@@ -23,4 +23,3 @@ function StepHeader() {
 }
 
 export default StepHeader;
-

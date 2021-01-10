@@ -4,6 +4,7 @@ import Home from "../src/home";
 import Orders from "../src/orders/Orders";
 import Navbar from "./Navbar";
 
+
 function Routes() {
     return (
         <BrowserRouter>
@@ -14,7 +15,7 @@ function Routes() {
                 </Route>
             </Switch>
             <Switch>
-                <Route path="/home">  
+                <Route path="/">  
                     <Home />
                 </Route>
             </Switch>
